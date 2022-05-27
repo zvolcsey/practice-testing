@@ -12,9 +12,10 @@ it('should transform to number if get a numeric value as string', () => {
   // Assert
   const expectedResult = +value;
   expect(result).toBe(expectedResult);
+  //expect(result).toBeTypeOf('number');
 });
 
-it('should yield NaN if invalid value is provided', () => {
+it('should yield NaN if invalid (non-transormable) value is provided', () => {
   // Arrange
   const value = 'invalid';
 
