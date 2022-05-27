@@ -4,4 +4,3 @@ export function extractNumbers(formData) {
 
   return [num1Input, num2Input];
 }
-
