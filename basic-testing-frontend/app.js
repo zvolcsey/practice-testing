@@ -1,24 +1,19 @@
-import { getInputs, cleanInputs } from './src/input.js';
-import { calculateResult, generateResultText } from './src/result.js';
-import { outputTextContent } from './src/output.js';
+import { outputResult, generateResultText } from './src/output.js';
+import { extractEnteredNumberValues } from './src/parser.js';
+import { calculateResult } from './src/math.js';
 
 const form = document.querySelector('form');
-const output = document.getElementById('result');
 
 function formSubmitHandler(event) {
   event.preventDefault();
 
-  const numberInputs = getInputs(form);
+  const numberValues = extractEnteredNumberValues(form);
 
-  try {
-    const numbers = cleanInputs(numberInputs);
-    result = calculateResult(numbers);
-  } catch (error) {
-    result = error.message;
-  }
+  const result = calculateResult(numberValues);
+
   const resultText = generateResultText(result);
 
-  outputTextContent(output, resultText);
+  outputResult(resultText);
 }
 
 form.addEventListener('submit', formSubmitHandler);
