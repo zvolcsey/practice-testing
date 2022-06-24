@@ -48,7 +48,9 @@ describe('cleanNumbers()', () => {
     const cleanedNumbers = cleanNumbers(numberValues);
 
     // Assert
-    expect(cleanedNumbers[0]).toBeTypeOf('number');
+    //expect(cleanedNumbers[0]).toBeTypeOf('number');
+    //expect(cleanedNumbers).toBe([1, 2]) failed, because array is a reference value
+    expect(cleanedNumbers).toEqual([1, 2]); // deep comparison
   });
 
   it('should throw an error if an array with at least one empty string is provided', () => {
