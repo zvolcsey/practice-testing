@@ -11,7 +11,12 @@ The base projects are
 `2022-06-24`
 
 - I added starting projects file to the `async-testing` folder and practiced the async testing in the `async-example.test.js` file based on the instructions of the course instructor.
+
+`2022-06-25`
+
 - I added starting projects file to the `mocking-and-spies` folder and practiced the mocking and spies based on the instructions of the course instructor.
+
+- I added starting projects file to the `advanced-mocking` folder and practiced testing.
 
 The base projects is from the resources of the course. The author is Maximilian Schwarzmüller.
 
