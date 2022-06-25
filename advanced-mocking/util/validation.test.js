@@ -7,19 +7,41 @@ const errorMessage = 'A title must be provided.';
 
 it('should throw an error if the provided text is empty', () => {
   // Arrange
-  const text = '';
+  const testInput = '';
   // Act
-  const resultFn = () => {
-    validateNotEmpty(text, errorMessage);
+  const validationFn = () => {
+    validateNotEmpty(testInput, errorMessage);
   };
   // Assert
-  expect(resultFn).toThrow();
+  expect(validationFn).toThrow();
+});
+
+it('should throw an error if the provided text contains blanks', () => {
+  // Arrange
+  const testInput = '  ';
+  // Act
+  const validationFn = () => {
+    validateNotEmpty(testInput, errorMessage);
+  };
+  // Assert
+  expect(validationFn).toThrow();
+});
+
+it('should throw an error with the provided error message', () => {
+  // Arrange
+  const testInput = '';
+  // Act
+  const validationFn = () => {
+    validateNotEmpty(testInput, errorMessage);
+  };
+  // Assert
+  expect(validationFn).toThrow(errorMessage);
 });
 
 it('should not return anything, if the provided text is not empty', () => {
   // Arrange
-  const text = 'Title';
+  const testInput = 'Title';
 
   // Assert
-  expect(validateNotEmpty(text, errorMessage)).toBeUndefined();
+  expect(validateNotEmpty(testInput, errorMessage)).toBeUndefined();
 });

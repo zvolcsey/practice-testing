@@ -4,46 +4,53 @@ import { HttpError, ValidationError } from './errors';
 
 describe('class HttpError', () => {
   // Arrange
-  const statusCode = 500;
-  const message = 'Sending the request failed';
-  const data = null;
+  const testStatusCode = 500;
+  const testMessage = 'Sending the request failed';
+  const testData = { key: 'test' };
 
   // Act
-  let error;
+  let testError;
   beforeEach(() => {
-    error = new HttpError(statusCode, message, data);
+    testError = new HttpError(testStatusCode, testMessage, testData);
   });
 
   it('should have a statusCode, a message and a data properties', () => {
     // Assert
-    expect(error).toHaveProperty('statusCode');
-    expect(error).toHaveProperty('message');
-    expect(error).toHaveProperty('data');
+    expect(testError).toHaveProperty('statusCode');
+    expect(testError).toHaveProperty('message');
+    expect(testError).toHaveProperty('data');
   });
   it('should store the provided values', () => {
     // Assert
-    expect(error.statusCode).toBe(500);
-    expect(error.message).toBe('Sending the request failed');
-    expect(error.data).toBeNull();
+    expect(testError.statusCode).toBe(testStatusCode);
+    expect(testError.message).toBe(testMessage);
+    expect(testError.data).toBe(testData);
+  });
+  it('should contain undefined as data if no data is provided', () => {
+    // Act
+    const newtestError = new HttpError(testStatusCode, testMessage);
+    // Assert
+    //expect(newtestError.data).not.toBeDefined();
+    expect(newtestError.data).toBeUndefined();
   });
 });
 
 describe('class ValidationError', () => {
   // Arrange
-  const message = 'A title must be provided.';
+  const testMessage = 'A title must be provided.';
 
   // Act
-  let error;
+  let testError;
   beforeEach(() => {
-    error = new ValidationError(message);
+    testError = new ValidationError(testMessage);
   });
 
   it('should have a message property', () => {
     // Assert
-    expect(error).toHaveProperty('message');
+    expect(testError).toHaveProperty('message');
   });
   it('should store the provided message value', () => {
     // Assert
-    expect(error.message).toBe('A title must be provided.');
+    expect(testError.message).toBe(testMessage);
   });
 });
